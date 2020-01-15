@@ -1,0 +1,18 @@
+version: "3"
+services:
+  rocketbox-api-db:
+    container_name: rocketbox-api-mongo
+    image: bitnami/mongodb:latest
+    restart: always
+    ports:
+      - 2000:27017
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./mongodb_data:/bitnami
+    networks:
+      - mongo-compose-network
+
+networks:
+  mongo-compose-network:
+    driver: bridge
